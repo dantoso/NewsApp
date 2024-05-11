@@ -1,10 +1,3 @@
-//
-//  NewsAppUITestsLaunchTests.swift
-//  NewsAppUITests
-//
-//  Created by Matheus Dantas on 11/05/24.
-//
-
 import XCTest
 
 final class NewsAppUITestsLaunchTests: XCTestCase {
