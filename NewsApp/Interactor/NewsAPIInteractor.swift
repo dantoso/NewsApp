@@ -1,19 +1,15 @@
 import Foundation
 import Alamofire
 
-final class NewsAPIInteractor: InteractorInputProtocol {
+struct NewsAPIInteractor: InteractorInputProtocol {
 
 	let presenter: InteractorOutputProtocol
 	let endpoint = "https://newsapi.org/v2/top-headlines?country=br"
 
-	lazy var apiKey: String? = {
+	var apiKey: String? {
 		let key = Bundle.main.object(forInfoDictionaryKey: "NEWS_API_KEY") as? String
 
 		return key
-	}()
-
-	init(presenter: InteractorOutputProtocol) {
-		self.presenter = presenter
 	}
 
 	func fetchNews() {
