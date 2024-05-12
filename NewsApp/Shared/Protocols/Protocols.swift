@@ -1,27 +1,29 @@
 import UIKit
 
-protocol ViewToPresenterProtocol {
-	func startFetchingNews()
-	func startImageFetch(url: String)
-}
-
-protocol PresenterToViewProtocol {
+protocol HomeViewProtocol {
 	func onErrorReceived(message: String)
 	func onNewsReceived(articles: [ArticleModel])
 	func onImageReceived(image: UIImage)
 }
 
-protocol PresenterToRouterProtocol {
-	func routeToArticleView()
-	func routeToHomeView()
+protocol PresenterProtocol {
+	func startFetchingNews()
+	func startImageFetch(url: String)
+	func onNavigationRequest(to: ArticleModel)
 }
 
-protocol PresenterToInteractorProtocol {
+protocol RouterProtocol {
+	func createModule() -> HomeVC
+	func routeToArticleView()
+	func presentHomeView()
+}
+
+protocol InteractorInputProtocol {
 	func fetchNews()
 	func fetchImage(url: String)
 }
 
-protocol InteractorToPresenterProtocol {
+protocol InteractorOutputProtocol {
 	func onFetchNewsResult(_ result: Result<ResponseModel, Error>)
 	func onImageRequestResult(_ result: Result<Data, Error>)
 }
