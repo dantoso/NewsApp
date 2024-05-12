@@ -17,7 +17,7 @@ final class NewsAPIInteractor: InteractorInputProtocol {
 	}
 
 	func fetchNews() {
-		guard let apiKey else { fatalError("ERROR: Could not get API key frin plist file") }
+		guard let apiKey else { fatalError("ERROR: Could not get API key in plist file") }
 
 		let headers: HTTPHeaders = ["Authorization": apiKey]
 
@@ -38,7 +38,21 @@ final class NewsAPIInteractor: InteractorInputProtocol {
 		}
 	}
 	
-	func fetchImage(url: String) {
-		
+	func fetchImage(url: String, idx: Int) {
+		Task {
+			let result: Result<Data, Error>
+
+			do {
+				let response = try await AF
+					.request(url, method: .get)
+					.serializingData().value
+
+				result = .success(response)
+			} catch let error {
+				result = .failure(error)
+			}
+
+			presenter.onImageRequestResult(result, idx: idx)
+		}
 	}
 }

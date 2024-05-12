@@ -17,7 +17,7 @@ struct PresenterMock: InteractorOutputProtocol {
 		newsFetchCompletion(result)
 	}
 	
-	func onImageRequestResult(_ result: Result<Data, Error>) {
+	func onImageRequestResult(_ result: Result<Data, Error>, idx: Int) {
 		imageFetchCompletion(result)
 	}
 }
