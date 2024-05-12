@@ -1,7 +1,7 @@
 import Foundation
 
-struct Article: Decodable {
-	let source: Source
+struct ArticleModel: Decodable {
+	let source: SourceModel
 	let author: String?
 	let title: String?
 	let description: String?

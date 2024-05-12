@@ -1,7 +1,7 @@
 import Foundation
 
-struct Response: Decodable {
+struct ResponseModel: Decodable {
 	let status: String
 	let totalResults: Int
-	let articles: [Article]
+	let articles: [ArticleModel]
 }

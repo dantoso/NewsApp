@@ -1,6 +1,6 @@
 import Foundation
 
-struct Source: Decodable {
+struct SourceModel: Decodable {
 	let id: String
 	let name: String
 }
