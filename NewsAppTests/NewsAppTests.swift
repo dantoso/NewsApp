@@ -10,7 +10,7 @@ final class NewsAppTests: XCTestCase {
 	func testInteractorNewsAPICall() {
 		let expectation = XCTestExpectation(description: "Wait for news request")
 
-		let presenter = PresenterMock { result in
+		let presenter = InteractorOutputMock { result in
 			switch result {
 			case .success(let success):
 				print(success.status)

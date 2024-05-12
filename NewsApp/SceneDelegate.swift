@@ -3,15 +3,16 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
+	var router: Router?
 
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 		guard let scene = (scene as? UIWindowScene) else { return }
 
-		window = UIWindow(windowScene: scene)
-		let vc = HomeVC()
-		window?.rootViewController = vc
-		window?.overrideUserInterfaceStyle = .dark
-		window?.makeKeyAndVisible()
+		let window = UIWindow(windowScene: scene)
+
+		self.window = window
+		router = Router(window: window)
+		router?.startApp()
 	}
 
 	func sceneDidDisconnect(_ scene: UIScene) { }
