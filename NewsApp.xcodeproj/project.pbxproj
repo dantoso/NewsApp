@@ -21,6 +21,7 @@
 		FB4A33912BEFB25600BFFBBD /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A33902BEFB25600BFFBBD /* UIView+Constraints.swift */; };
 		FB64E2B22BF26AB400F3FE9F /* NewsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64E2B12BF26AB400F3FE9F /* NewsCellView.swift */; };
 		FB64E2B52BF2817700F3FE9F /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64E2B42BF2817700F3FE9F /* NewsCell.swift */; };
+		FB64E2B92BF2AA5600F3FE9F /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64E2B82BF2AA5600F3FE9F /* ArticleView.swift */; };
 		FBE4F6622BF11EAB009C65FB /* NewsAPIInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE4F6612BF11EAB009C65FB /* NewsAPIInteractor.swift */; };
 		FBEC2BD72BF138FF0089FD04 /* InteractorOutputMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEC2BD62BF138FF0089FD04 /* InteractorOutputMock.swift */; };
 		FBEC2BDA2BF146760089FD04 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEC2BD92BF146760089FD04 /* Router.swift */; };
@@ -74,6 +75,7 @@
 		FB4A33902BEFB25600BFFBBD /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		FB64E2B12BF26AB400F3FE9F /* NewsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellView.swift; sourceTree = "<group>"; };
 		FB64E2B42BF2817700F3FE9F /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		FB64E2B82BF2AA5600F3FE9F /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		FBE4F6612BF11EAB009C65FB /* NewsAPIInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIInteractor.swift; sourceTree = "<group>"; };
 		FBEC2BD62BF138FF0089FD04 /* InteractorOutputMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorOutputMock.swift; sourceTree = "<group>"; };
 		FBEC2BD92BF146760089FD04 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -193,7 +195,8 @@
 		FB4A338E2BEFAAA500BFFBBD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FB4A33622BEFA6E000BFFBBD /* HomeVC.swift */,
+				FB64E2B62BF2AA3E00F3FE9F /* Home */,
+				FB64E2B72BF2AA4700F3FE9F /* Article */,
 				FB64E2B32BF2815F00F3FE9F /* NewsCell */,
 			);
 			path = View;
@@ -226,6 +229,22 @@
 				FB64E2B42BF2817700F3FE9F /* NewsCell.swift */,
 			);
 			path = NewsCell;
+			sourceTree = "<group>";
+		};
+		FB64E2B62BF2AA3E00F3FE9F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FB4A33622BEFA6E000BFFBBD /* HomeVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		FB64E2B72BF2AA4700F3FE9F /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				FB64E2B82BF2AA5600F3FE9F /* ArticleView.swift */,
+			);
+			path = Article;
 			sourceTree = "<group>";
 		};
 		FBEC2BD52BF138BF0089FD04 /* Presenter */ = {
@@ -529,6 +548,7 @@
 				FB4A33612BEFA6E000BFFBBD /* SceneDelegate.swift in Sources */,
 				FB4A33912BEFB25600BFFBBD /* UIView+Constraints.swift in Sources */,
 				FBFAD3152BF03BFA001C4D0C /* ErrorResponseModel.swift in Sources */,
+				FB64E2B92BF2AA5600F3FE9F /* ArticleView.swift in Sources */,
 				FBEC2BDC2BF149260089FD04 /* HomePresenter.swift in Sources */,
 				FB64E2B22BF26AB400F3FE9F /* NewsCellView.swift in Sources */,
 				FBFAD30F2BF03990001C4D0C /* ArticleModel.swift in Sources */,
