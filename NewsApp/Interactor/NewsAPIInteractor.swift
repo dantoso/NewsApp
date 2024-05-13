@@ -4,7 +4,7 @@ import Alamofire
 struct NewsAPIInteractor: InteractorInputProtocol {
 
 	let presenter: InteractorOutputProtocol
-	let endpoint = "https://newsapi.org/v2/top-headlines?country=br"
+	let endpoint = "https://newsapi.org/v2/top-headlines?country=us&pageSize=100"
 
 	var apiKey: String? {
 		let key = Bundle.main.object(forInfoDictionaryKey: "NEWS_API_KEY") as? String
