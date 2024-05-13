@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 final class HomePresenter: HomePresenterProtocol, InteractorOutputProtocol {
 	var interactor: InteractorInputProtocol?
@@ -9,24 +10,42 @@ final class HomePresenter: HomePresenterProtocol, InteractorOutputProtocol {
 		self.router = router
 	}
 
-	// TODO: Implement these
 	func startFetchingNews() {
-
+		interactor?.fetchNews()
 	}
 	
 	func startImageFetch(url: String, idx: Int) {
-
+		interactor?.fetchImage(url: url, idx: idx)
 	}
 	
+	// TODO: Implement this
 	func onNavigationRequest(to: ArticleModel) {
 
 	}
 	
 	func onFetchNewsResult(_ result: Result<ResponseModel, any Error>) {
+		switch result {
+		case .success(let success):
+			let articles = success.articles
+			view?.onNewsReceived(articles: articles)
 
+		case .failure(let failure):
+			view?.onErrorReceived(message: failure.localizedDescription)
+
+		}
 	}
 	
 	func onImageRequestResult(_ result: Result<Data, any Error>, idx: Int) {
+		switch result {
+		case .success(let data):
+			if let image = UIImage(data: data) {
+				view?.onImageReceived(image: image, idx: idx)
+			} else {
+				view?.onErrorReceived(message: "Data received could not be converted to image")
+			}
 
+		case .failure(let failure):
+			view?.onErrorReceived(message: failure.localizedDescription)
+		}
 	}
 }
