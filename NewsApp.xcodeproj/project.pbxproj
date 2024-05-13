@@ -19,6 +19,8 @@
 		FB4A33802BEFA6E100BFFBBD /* NewsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A337F2BEFA6E100BFFBBD /* NewsAppUITests.swift */; };
 		FB4A33822BEFA6E100BFFBBD /* NewsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A33812BEFA6E100BFFBBD /* NewsAppUITestsLaunchTests.swift */; };
 		FB4A33912BEFB25600BFFBBD /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A33902BEFB25600BFFBBD /* UIView+Constraints.swift */; };
+		FB64E2B22BF26AB400F3FE9F /* NewsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64E2B12BF26AB400F3FE9F /* NewsCellView.swift */; };
+		FB64E2B52BF2817700F3FE9F /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64E2B42BF2817700F3FE9F /* NewsCell.swift */; };
 		FBE4F6622BF11EAB009C65FB /* NewsAPIInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE4F6612BF11EAB009C65FB /* NewsAPIInteractor.swift */; };
 		FBEC2BD72BF138FF0089FD04 /* InteractorOutputMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEC2BD62BF138FF0089FD04 /* InteractorOutputMock.swift */; };
 		FBEC2BDA2BF146760089FD04 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEC2BD92BF146760089FD04 /* Router.swift */; };
@@ -70,6 +72,8 @@
 		FB4A337F2BEFA6E100BFFBBD /* NewsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppUITests.swift; sourceTree = "<group>"; };
 		FB4A33812BEFA6E100BFFBBD /* NewsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FB4A33902BEFB25600BFFBBD /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		FB64E2B12BF26AB400F3FE9F /* NewsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellView.swift; sourceTree = "<group>"; };
+		FB64E2B42BF2817700F3FE9F /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		FBE4F6612BF11EAB009C65FB /* NewsAPIInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIInteractor.swift; sourceTree = "<group>"; };
 		FBEC2BD62BF138FF0089FD04 /* InteractorOutputMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorOutputMock.swift; sourceTree = "<group>"; };
 		FBEC2BD92BF146760089FD04 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				FB4A33622BEFA6E000BFFBBD /* HomeVC.swift */,
+				FB64E2B32BF2815F00F3FE9F /* NewsCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,6 +217,15 @@
 				FB4A33902BEFB25600BFFBBD /* UIView+Constraints.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FB64E2B32BF2815F00F3FE9F /* NewsCell */ = {
+			isa = PBXGroup;
+			children = (
+				FB64E2B12BF26AB400F3FE9F /* NewsCellView.swift */,
+				FB64E2B42BF2817700F3FE9F /* NewsCell.swift */,
+			);
+			path = NewsCell;
 			sourceTree = "<group>";
 		};
 		FBEC2BD52BF138BF0089FD04 /* Presenter */ = {
@@ -508,6 +522,7 @@
 				FB4A33632BEFA6E000BFFBBD /* HomeVC.swift in Sources */,
 				FB4A335F2BEFA6E000BFFBBD /* AppDelegate.swift in Sources */,
 				FBEC2BD72BF138FF0089FD04 /* InteractorOutputMock.swift in Sources */,
+				FB64E2B52BF2817700F3FE9F /* NewsCell.swift in Sources */,
 				FBEC2BDA2BF146760089FD04 /* Router.swift in Sources */,
 				FBFAD3112BF03A86001C4D0C /* SourceModel.swift in Sources */,
 				FBFAD31A2BF046CC001C4D0C /* Protocols.swift in Sources */,
@@ -515,6 +530,7 @@
 				FB4A33912BEFB25600BFFBBD /* UIView+Constraints.swift in Sources */,
 				FBFAD3152BF03BFA001C4D0C /* ErrorResponseModel.swift in Sources */,
 				FBEC2BDC2BF149260089FD04 /* HomePresenter.swift in Sources */,
+				FB64E2B22BF26AB400F3FE9F /* NewsCellView.swift in Sources */,
 				FBFAD30F2BF03990001C4D0C /* ArticleModel.swift in Sources */,
 				FBFAD3132BF03B8E001C4D0C /* ResponseModel.swift in Sources */,
 			);
