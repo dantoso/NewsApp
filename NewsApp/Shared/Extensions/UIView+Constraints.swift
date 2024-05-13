@@ -17,27 +17,27 @@ extension UIView {
 
 		translatesAutoresizingMaskIntoConstraints = false
 
-		if let top = top {
+		if let top {
 			topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
 		}
 		
-		if let left = left {
+		if let left {
 			leftAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
 		}
 		
-		if let bottom = bottom {
+		if let bottom {
 			bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
 		}
 		
-		if let right = right {
+		if let right {
 			rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
 		}
 		
-		if let width = width {
+		if let width {
 			widthAnchor.constraint(equalToConstant: width).isActive = true
 		}
 		
-		if let height = height {
+		if let height {
 			heightAnchor.constraint(equalToConstant: height).isActive = true
 		}
 	}
