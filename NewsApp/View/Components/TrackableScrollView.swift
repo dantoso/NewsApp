@@ -41,25 +41,29 @@ struct PointPreferenceKey: PreferenceKey {
 	static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {}
 }
 
-struct TrackableScroll_Previews: PreviewProvider {
-	@State static var scrollOffset: CGVector = .zero
+#Preview {
+	struct Wrapper: View {
+		@State var scrollOffset: CGVector = .zero
 
-	static var previews: some View {
-		VStack {
-			Text("dx: \(scrollOffset.dx)")
-			Text("dy: \(scrollOffset.dy)")
-			TrackableScrollView(.vertical, scrollOffset: $scrollOffset) {
-				VStack {
-					ForEach(0..<20) { i in
-						Text("number: \(i)")
-							.background(.yellow)
-							.padding()
-							.background(.red)
-							.padding()
-							.background(.green)
+		var body: some View {
+			VStack {
+				Text("dx: \(scrollOffset.dx)")
+				Text("dy: \(scrollOffset.dy)")
+				TrackableScrollView(.vertical, scrollOffset: $scrollOffset) {
+					VStack {
+						ForEach(0..<20) { i in
+							Text("number: \(i)")
+								.background(.yellow)
+								.padding()
+								.background(.red)
+								.padding()
+								.background(.green)
+						}
 					}
 				}
 			}
 		}
 	}
+
+	return Wrapper()
 }
