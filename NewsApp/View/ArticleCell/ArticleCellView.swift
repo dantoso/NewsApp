@@ -60,14 +60,6 @@ struct ArticleCellView: View {
 #Preview {
 	ArticleCellView(
 		image: UIImage(named: "HylicsWayne"),
-		article: .init(
-			source: .init(id: "", name: ""),
-			author: "Allison Johnson",
-			title: "Michael Cohen set to take the stand in Trump's hush money trial - NBC News",
-			description: "The Google Pixel 8A is a midrange phone with a camera that punches above its weight — important when you’re unexpectedly photographing a once-in-a-lifetime event.",
-			urlToImage: "not nil",
-			publishedAt: nil,
-			content: nil
-		)
+		article: MockEntities.article
 	)
 }

@@ -11,9 +11,6 @@ struct LoadingImage: View {
 					Image(uiImage: image)
 						.resizable()
 						.aspectRatio(contentMode: .fit)
-						.mask {
-							RoundedRectangle(cornerRadius: 24)
-						}
 				} else {
 					ProgressView()
 				}
