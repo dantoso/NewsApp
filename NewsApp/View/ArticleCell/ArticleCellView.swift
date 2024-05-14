@@ -8,16 +8,21 @@ struct ArticleCellView: View {
 	var body: some View {
 		VStack(alignment: .center, spacing: 10) {
 			title
+				.padding()
 
-			loadingImage
+			ZStack(alignment: .bottom) {
+				loadingImage
+					.padding(.horizontal, 24)
 
-			description
+				description
+					.padding(.horizontal, 12)
+			}
 
 			author
+				.padding(.bottom)
 		}
-		.padding()
 		.background {
-			RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+			RoundedRectangle(cornerRadius: 24)
 				.fill(.regularMaterial)
 		}
 	}
@@ -33,9 +38,15 @@ struct ArticleCellView: View {
 			if let description = article.description {
 				Text("\(description)")
 					.font(.subheadline)
-					.multilineTextAlignment(.center)
+					.multilineTextAlignment(.leading)
 			}
 		}
+		.padding()
+		.background {
+			RoundedRectangle(cornerRadius: 10)
+				.fill(.thinMaterial)
+		}
+		.fixedSize(horizontal: false, vertical: true)
 	}
 
 	var author: some View {
@@ -51,6 +62,10 @@ struct ArticleCellView: View {
 					Image(uiImage: image)
 						.resizable()
 						.aspectRatio(contentMode: .fit)
+						.mask {
+							RoundedRectangle(cornerRadius: 24)
+						}
+						.padding(.bottom, 56)
 				} else {
 					ProgressView()
 				}

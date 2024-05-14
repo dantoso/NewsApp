@@ -54,8 +54,9 @@ final class HomeVC: UIViewController {
 	}
 }
 
-// TODO: Immplement these
 extension HomeVC: HomeViewProtocol {
+
+	// TODO: Alert errors to user
 	func onErrorReceived(message: String) {
 		print(message)
 	}
