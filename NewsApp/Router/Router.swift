@@ -40,7 +40,6 @@ final class Router: RouterProtocol {
 	private func setupNavController() {
 		navController.viewControllers = [createHomeVC()]
 
-		let vc = UIHostingController(rootView: BackButton())
 		let backImage = UIImage(systemName: "chevron.backward.circle.fill")
 
 		let appearance = UINavigationBar.appearance()
