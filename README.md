@@ -3,9 +3,9 @@ Esse projeto foi feito usando CocoaPods, então para executá-lo, primeiro:
 - Instale o CocoaPods
 
   Utilizando o HomeBrew:
-```
-brew install cocoapods
-```
+  ```
+  brew install cocoapods
+  ```
 - Abra o arquivo NewsApp._**xcworkspace**_ ( **não** o NewsApp._**xcodeproj**_ ) com o XCode
 - No site [https://newsapi.org/](https://newsapi.org/) gere uma chave para o uso da API.
 - No arquivo NewsApp/Shared/Info.plist, na chave **NEWS_API_KEY**, substitua a string **YOUR_KEY_HERE** pela sua chave gerada no site.
