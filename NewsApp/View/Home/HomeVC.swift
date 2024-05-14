@@ -83,7 +83,7 @@ extension HomeVC: HomeViewProtocol {
 extension HomeVC: UITableViewDataSource {
 
 	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-		return 10
+		return 20
 	}
 
 	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -121,6 +121,8 @@ extension HomeVC: UITableViewDataSource {
 
 extension HomeVC: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+		let article = data[indexPath.section]
+		let image = images[indexPath.section]
+		presenter?.onNavigationRequest(to: article, with: image)
 	}
 }

@@ -146,12 +146,12 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		FB046DC72BF3F5B1007B6AF7 /* MockEntities */ = {
+		FB046DC72BF3F5B1007B6AF7 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
 				FB046DC82BF3F684007B6AF7 /* MockEntities.swift */,
 			);
-			path = MockEntities;
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		FB4A33522BEFA6E000BFFBBD = {
@@ -276,9 +276,9 @@
 		FBEC2BD52BF138BF0089FD04 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				FBEC2BDD2BF153FF0089FD04 /* Mock */,
 				FBEC2BDB2BF149260089FD04 /* HomePresenter.swift */,
 				FB046DC52BF3ED9B007B6AF7 /* ArticlePresenter.swift */,
-				FBEC2BDD2BF153FF0089FD04 /* Mock */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -302,7 +302,7 @@
 		FBFAD30D2BF037AF001C4D0C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				FB046DC72BF3F5B1007B6AF7 /* MockEntities */,
+				FB046DC72BF3F5B1007B6AF7 /* Mock */,
 				FBFAD3122BF03B8E001C4D0C /* ResponseModel.swift */,
 				FBFAD3142BF03BFA001C4D0C /* ErrorResponseModel.swift */,
 				FBFAD30E2BF03990001C4D0C /* ArticleModel.swift */,

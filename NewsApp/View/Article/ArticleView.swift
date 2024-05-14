@@ -17,13 +17,19 @@ struct ArticleView: View {
 				.offset(y: -mult)
 
 			TrackableScrollView(scrollOffset: $scrollOffset) {
-				Text(article.content ?? "No further content provided.")
-					.padding(.bottom, 100)
-					.padding()
-					.background {
-						RoundedRectangle(cornerRadius: 24)
-							.fill(.thinMaterial)
-					}
+				VStack {
+					Text(article.content ?? "No further content provided.")
+						.padding(.bottom)
+
+					Text("Unfortunately, to read the full article, I would have to implement a web scraping mechanism for each news website that my app would scrape, something I won't submit myself to do in 7 days.")
+				}
+				.padding(.bottom, 100)
+				.padding()
+				.background {
+					RoundedRectangle(cornerRadius: 24)
+						.fill(.thinMaterial)
+				}
+
 			}
 			.padding(.top, 170)
 
@@ -56,4 +62,5 @@ struct ArticleView: View {
 		image: UIImage(named: "HylicsWayne"),
 		article: MockEntities.article
 	)
+	.preferredColorScheme(.dark)
 }

@@ -9,11 +9,11 @@ protocol HomeViewProtocol: AnyObject {
 protocol HomePresenterProtocol: AnyObject {
 	func startFetchingNews()
 	func startImageFetch(url: String, idx: Int)
-	func onNavigationRequest(to: ArticleModel)
+	func onNavigationRequest(to: ArticleModel, with image: UIImage?)
 }
 
 protocol RouterProtocol: AnyObject {
-	func routeToArticleView(article: ArticleModel)
+	func routeToArticleView(article: ArticleModel, image: UIImage?)
 }
 
 protocol InteractorInputProtocol {

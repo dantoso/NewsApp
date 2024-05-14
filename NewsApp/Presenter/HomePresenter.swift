@@ -18,9 +18,8 @@ final class HomePresenter: HomePresenterProtocol, InteractorOutputProtocol {
 		interactor?.fetchImage(url: url, idx: idx)
 	}
 	
-	// TODO: Implement this
-	func onNavigationRequest(to: ArticleModel) {
-
+	func onNavigationRequest(to article: ArticleModel, with image: UIImage?) {
+		router?.routeToArticleView(article: article, image: image)
 	}
 	
 	func onFetchNewsResult(_ result: Result<ResponseModel, any Error>) {

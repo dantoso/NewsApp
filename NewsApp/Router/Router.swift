@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 
 final class Router: RouterProtocol {
 
@@ -11,13 +12,14 @@ final class Router: RouterProtocol {
 	init(window: UIWindow) {
 		self.window = window
 	}
-	
-	// TODO: Implement this
-	func routeToArticleView(article: ArticleModel) {
-		print("Routing to article view not yet implemented")
+
+	func routeToArticleView(article: ArticleModel, image: UIImage?) {
+		let vc = UIHostingController(rootView: ArticleView(image: image, article: article))
+		navController.pushViewController(vc, animated: true)
 	}
 
 	func startApp() {
+		navController.navigationBar.tintColor = .white
 		navController.viewControllers = [createHomeVC()]
 		window.rootViewController = navController
 		window.overrideUserInterfaceStyle = .dark

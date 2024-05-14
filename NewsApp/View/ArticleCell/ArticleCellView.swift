@@ -62,4 +62,5 @@ struct ArticleCellView: View {
 		image: UIImage(named: "HylicsWayne"),
 		article: MockEntities.article
 	)
+	.preferredColorScheme(.dark)
 }
