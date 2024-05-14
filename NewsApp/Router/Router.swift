@@ -15,12 +15,12 @@ final class Router: RouterProtocol {
 
 	func routeToArticleView(article: ArticleModel, image: UIImage?) {
 		let vc = UIHostingController(rootView: ArticleView(image: image, article: article))
+		vc.navigationItem.backButtonTitle = ""
 		navController.pushViewController(vc, animated: true)
 	}
 
 	func startApp() {
-		navController.navigationBar.tintColor = .white
-		navController.viewControllers = [createHomeVC()]
+		setupNavController()
 		window.rootViewController = navController
 		window.overrideUserInterfaceStyle = .dark
 		window.makeKeyAndVisible()
@@ -29,10 +29,22 @@ final class Router: RouterProtocol {
 	private func createHomeVC() -> HomeVC {
 		let home = HomeVC()
 		home.presenter = homePresenter
+		home.navigationItem.backButtonTitle = ""
 
 		homePresenter.view = home
 		homePresenter.interactor = interactor
 
 		return home
+	}
+
+	private func setupNavController() {
+		navController.viewControllers = [createHomeVC()]
+
+		let vc = UIHostingController(rootView: BackButton())
+		let backImage = UIImage(systemName: "chevron.backward.circle.fill")
+
+		let appearance = UINavigationBar.appearance()
+		appearance.backIndicatorImage = backImage
+		appearance.backIndicatorTransitionMaskImage = backImage
 	}
 }
