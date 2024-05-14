@@ -11,8 +11,9 @@ struct ArticleCellView: View {
 				.padding()
 
 			ZStack(alignment: .bottom) {
-				loadingImage
+				LoadingImage(hasURL: article.urlToImage != nil, image: image)
 					.padding(.horizontal, 24)
+					.padding(.bottom, 56)
 
 				description
 					.padding(.horizontal, 12)
@@ -53,24 +54,6 @@ struct ArticleCellView: View {
 		Text("by \(article.author ?? "Unknown author")")
 			.font(.caption)
 			.opacity(0.8)
-	}
-
-	var loadingImage: some View {
-		Group {
-			if article.urlToImage != nil {
-				if let image {
-					Image(uiImage: image)
-						.resizable()
-						.aspectRatio(contentMode: .fit)
-						.mask {
-							RoundedRectangle(cornerRadius: 24)
-						}
-						.padding(.bottom, 56)
-				} else {
-					ProgressView()
-				}
-			}
-		}
 	}
 }
 

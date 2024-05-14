@@ -14,7 +14,6 @@ struct LoadingImage: View {
 						.mask {
 							RoundedRectangle(cornerRadius: 24)
 						}
-						.padding(.bottom, 56)
 				} else {
 					ProgressView()
 				}
