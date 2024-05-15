@@ -15,14 +15,8 @@ struct ArticleView: View {
 
 	var body: some View {
 		ZStack(alignment: .topTrailing) {
-			LoadingImage(hasURL: article.urlToImage != nil, image: image)
-				.aspectRatio(contentMode: .fill)
-				.frame(width: screen.bounds.width, height: screen.bounds.height*0.3)
-				.mask {
-					Rectangle()
-						.frame(width: screen.bounds.width, height: screen.bounds.height*0.3)
-				}
-				.offset(y: mult < 70 ? -mult : -70)
+
+			animatedImage
 
 			TrackableScrollView(scrollOffset: $scrollOffset) {
 				VStack {
@@ -44,17 +38,26 @@ struct ArticleView: View {
 			}
 			.padding(.top, 170)
 
-			date
-				.padding()
-				.padding(.top, 42)
-				.offset(y: mult < 80 ? mult*0.5 : 40)
-				.opacity(mult < 20 ? 1 : CGFloat(2 - mult/20))
-				.blur(radius: mult < 25 ? 0 : mult/25)
+			animatedDate
 		}
 		.ignoresSafeArea()
 	}
 
-	var date: some View {
+	var animatedImage: some View {
+		let imageSpace = CGSize(width: screen.bounds.width, height: screen.bounds.height*0.3)
+		let imageMoveLimit = imageSpace.height*0.3
+
+		return LoadingImage(hasURL: article.urlToImage != nil, image: image)
+			.aspectRatio(contentMode: .fill)
+			.frame(width: imageSpace.width, height: imageSpace.height)
+			.mask {
+				Rectangle()
+					.frame(width: screen.bounds.width, height: screen.bounds.height*0.3)
+			}
+			.offset(y: mult < imageMoveLimit ? -mult : -imageMoveLimit)
+	}
+
+	var animatedDate: some View {
 		let date = presenter.getFormattedDateString(from: article.publishedAt)
 		return Text("\(String.publishedAt) \(date ?? String.dateIsNil)")
 			.foregroundStyle(.secondary)
@@ -64,6 +67,11 @@ struct ArticleView: View {
 				RoundedRectangle(cornerRadius: 12)
 					.fill(.ultraThinMaterial)
 			}
+			.padding()
+			.padding(.top, 42)
+			.offset(y: mult < 80 ? mult*0.5 : 40)
+			.opacity(mult < 20 ? 1 : CGFloat(2 - mult/20))
+			.blur(radius: mult < 25 ? 0 : mult/25)
 	}
 
 }
