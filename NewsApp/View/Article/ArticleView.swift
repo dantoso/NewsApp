@@ -47,7 +47,7 @@ struct ArticleView: View {
 
 	var animatedImage: some View {
 		let imageSpace = CGSize(width: screen.bounds.width, height: screen.bounds.height*0.3)
-		let imageMoveLimit = imageSpace.height*0.3
+		let imageMoveLimit = imageSpace.height*0.28
 
 		return LoadingImage(hasURL: article.urlToImage != nil, image: image)
 			.aspectRatio(contentMode: .fill)
