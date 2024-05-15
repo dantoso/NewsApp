@@ -5,17 +5,55 @@ final class HomeVC: UIViewController {
 	private lazy var newsFeed: UITableView = createNewsFeed()
 	private lazy var progressView = UIActivityIndicatorView(frame: view.bounds)
 
+	private var data: [ArticleModel] = []
+	private var images: [Int: UIImage] = [:]
+
 	weak var presenter: HomePresenterProtocol?
 
-	var data: [ArticleModel] = []
-	var images: [Int: UIImage] = [:]
+	let screen: UIScreen
 
+	init(screen: UIScreen) {
+		self.screen = screen
+		super.init(nibName: nil, bundle: nil)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		title = "Today's news"
+		navigationItem.largeTitleDisplayMode = .always
+		navigationItem.backButtonTitle = ""
+
 		addProgressView()
 
 		presenter?.startFetchingNews()
 	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		let appearance = UINavigationBarAppearance()
+		appearance.configureWithDefaultBackground()
+		
+		navigationController?.navigationBar.standardAppearance = appearance
+		navigationController?.navigationBar.scrollEdgeAppearance = appearance
+		navigationController?.navigationBar.compactAppearance = appearance
+
+		super.viewWillAppear(animated)
+	}
+
+//	override func viewWillDisappear(_ animated: Bool) {
+//		let appearance = UINavigationBarAppearance()
+//		appearance.configureWithTransparentBackground()
+//
+//		navigationController?.navigationBar.standardAppearance = appearance
+//		navigationController?.navigationBar.scrollEdgeAppearance = appearance
+//		navigationController?.navigationBar.compactAppearance = appearance
+//
+//		super.viewWillDisappear(animated)
+//	}
 
 	private func addProgressView() {
 		progressView.hidesWhenStopped = true
@@ -49,8 +87,13 @@ final class HomeVC: UIViewController {
 		tableView.register(ArticleCell.self, forCellReuseIdentifier: ArticleCell.identifier)
 		tableView.delegate = self
 		tableView.dataSource = self
-		
+		tableView.separatorStyle = .none
+
 		return tableView
+	}
+
+	func getData() -> (articles: [ArticleModel], images: [Int: UIImage]) {
+		return (data, images)
 	}
 }
 
@@ -82,11 +125,11 @@ extension HomeVC: HomeViewProtocol {
 
 extension HomeVC: UITableViewDataSource {
 
-	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-		return 20
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 15
 	}
 
-	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let view = UIView()
 		view.backgroundColor = UIColor.clear
 		return view
@@ -107,7 +150,7 @@ extension HomeVC: UITableViewDataSource {
 
 		let article = data[indexPath.section]
 		let image = images[indexPath.section]
-		cell.configure(article: article, image: image)
+		cell.configure(article: article, image: image, screen: screen)
 
 		if let urlToImage = article.urlToImage, image == nil {
 			presenter?.startImageFetch(url: urlToImage, idx: indexPath.section)

@@ -5,6 +5,8 @@ struct ArticleView: View {
 	let article: ArticleModel
 	let presenter = ArticlePresenter()
 
+	let screen: UIScreen
+
 	@State private var scrollOffset: CGVector = .zero
 
 	var mult: CGFloat {
@@ -13,39 +15,53 @@ struct ArticleView: View {
 
 	var body: some View {
 		ZStack(alignment: .topTrailing) {
-			LoadingImage(hasURL: article.urlToImage != nil, image: image)
-				.offset(y: -mult)
+
+			animatedImage
 
 			TrackableScrollView(scrollOffset: $scrollOffset) {
 				VStack {
-					Text(article.content ?? "No further content provided.")
+					Text(article.content ?? String.contentIsNil)
 						.padding(.bottom)
 
-					Text("Unfortunately, to read the full article, I would have to implement a web scraping mechanism for each news website that my app would scrape, something I won't submit myself to do in 7 days.")
+					Text(String.lackOfContentNotice)
+						.padding(.bottom)
+
+					Text(String.loremIpsum)
 				}
 				.padding(.bottom, 100)
-				.padding()
-				.background {
-					RoundedRectangle(cornerRadius: 24)
-						.fill(.thinMaterial)
-				}
+				.ignoresSafeArea()
 
 			}
-			.padding(.top, 170)
+			.padding()
+			.background {
+				RoundedRectangle(cornerRadius: 24)
+					.fill(.thinMaterial)
+					.offset(y: scrollOffset.dy < 0 ? 0 : scrollOffset.dy)
+					.ignoresSafeArea()
+			}
+			.padding(.top, screen.bounds.height*0.2)
 
-			date
-				.padding()
-				.padding(.top, 42)
-				.offset(y: mult < 80 ? mult*0.5 : 40)
-				.opacity(mult < 20 ? 1 : CGFloat(2 - mult/20))
-				.blur(radius: mult < 25 ? 0 : mult/25)
+			animatedDate
 		}
-		.ignoresSafeArea()
 	}
 
-	var date: some View {
+	var animatedImage: some View {
+		let imageSpace = CGSize(width: screen.bounds.width, height: screen.bounds.height*0.3)
+		let imageMoveLimit = imageSpace.height*0.28
+
+		return LoadingImage(hasURL: article.urlToImage != nil, image: image)
+			.aspectRatio(contentMode: .fill)
+			.frame(width: imageSpace.width, height: imageSpace.height)
+			.mask {
+				Rectangle()
+					.frame(width: screen.bounds.width, height: screen.bounds.height*0.3)
+			}
+			.offset(y: mult < imageMoveLimit ? -mult : -imageMoveLimit)
+	}
+
+	var animatedDate: some View {
 		let date = presenter.getFormattedDateString(from: article.publishedAt)
-		return Text("Published at \(date ?? "Unknown date")")
+		return Text("\(String.publishedAt) \(date ?? String.dateIsNil)")
 			.foregroundStyle(.secondary)
 			.font(.footnote)
 			.padding(10)
@@ -53,14 +69,20 @@ struct ArticleView: View {
 				RoundedRectangle(cornerRadius: 12)
 					.fill(.ultraThinMaterial)
 			}
+			.padding()
+			.padding(.top)
+			.offset(y: mult < 80 ? mult*0.5 : 40)
+			.opacity(mult < 8 ? 1 : CGFloat(2 - mult/8))
+			.blur(radius: mult < 10 ? 0 : mult/10)
 	}
 
 }
 
 #Preview {
 	ArticleView(
-		image: UIImage(named: "HylicsWayne"),
-		article: MockEntities.article
+		image: MockData.image(url: MockData.articles[0].urlToImage ?? ""),
+		article: MockData.articles[0],
+		screen: UIScreen.main
 	)
 	.preferredColorScheme(.dark)
 }

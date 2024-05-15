@@ -25,7 +25,7 @@ final class HomePresenter: HomePresenterProtocol, InteractorOutputProtocol {
 	func onFetchNewsResult(_ result: Result<ResponseModel, any Error>) {
 		switch result {
 		case .success(let success):
-			let articles = success.articles
+			let articles = filterRemovedAndEmptyArticles(articles: success.articles)
 			view?.onNewsReceived(articles: articles)
 
 		case .failure(let failure):
@@ -46,5 +46,14 @@ final class HomePresenter: HomePresenterProtocol, InteractorOutputProtocol {
 		case .failure(let failure):
 			view?.onErrorReceived(message: failure.localizedDescription)
 		}
+	}
+
+	func filterRemovedAndEmptyArticles(articles: [ArticleModel]) -> [ArticleModel] {
+		let filtered = articles.filter { article in
+			let title = article.title
+			return title != nil && title != "[Removed]"
+		}
+
+		return filtered
 	}
 }

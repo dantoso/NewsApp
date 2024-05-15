@@ -5,8 +5,8 @@ final class ArticleCell: UITableViewCell {
 
 	static let identifier = "NewsCell"
 
-	func configure(article: ArticleModel, image: UIImage?) {
-		let controller = UIHostingController(rootView: ArticleCellView(image: image, article: article))
+	func configure(article: ArticleModel, image: UIImage?, screen: UIScreen) {
+		let controller = UIHostingController(rootView: ArticleCellView(image: image, article: article, screen: screen))
 		guard let view = controller.view else { return }
 
 		render(view: view)
