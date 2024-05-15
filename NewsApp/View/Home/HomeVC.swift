@@ -10,6 +10,17 @@ final class HomeVC: UIViewController {
 
 	weak var presenter: HomePresenterProtocol?
 
+	let screen: UIScreen
+
+	init(screen: UIScreen) {
+		self.screen = screen
+		super.init(nibName: nil, bundle: nil)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -139,7 +150,7 @@ extension HomeVC: UITableViewDataSource {
 
 		let article = data[indexPath.section]
 		let image = images[indexPath.section]
-		cell.configure(article: article, image: image)
+		cell.configure(article: article, image: image, screen: screen)
 
 		if let urlToImage = article.urlToImage, image == nil {
 			presenter?.startImageFetch(url: urlToImage, idx: indexPath.section)

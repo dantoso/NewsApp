@@ -4,6 +4,7 @@ struct ArticleCellView: View {
 
 	let image: UIImage?
 	let article: ArticleModel
+	let screen: UIScreen
 
 	var body: some View {
 		VStack(alignment: .center, spacing: 10) {
@@ -11,7 +12,10 @@ struct ArticleCellView: View {
 				.padding()
 
 			ZStack(alignment: .bottom) {
-				LoadingImage(hasURL: article.urlToImage != nil, image: image)
+				imageView
+					.mask {
+						RoundedRectangle(cornerRadius: 8)
+					}
 					.padding(.horizontal, 24)
 					.padding(.bottom, 56)
 
@@ -26,12 +30,26 @@ struct ArticleCellView: View {
 			RoundedRectangle(cornerRadius: 24)
 				.fill(.regularMaterial)
 		}
+		.background {
+			imageView
+				.aspectRatio(contentMode: .fill)
+				.mask {
+					RoundedRectangle(cornerRadius: 24)
+						.frame(width: screen.bounds.width)
+				}
+
+		}
+
 	}
 
 	var title: some View {
 		Text(article.title ?? String.titleIsNil)
 			.font(.system(size: 24, weight: .medium))
 			.multilineTextAlignment(.center)
+	}
+
+	var imageView: some View {
+		LoadingImage(hasURL: article.urlToImage != nil, image: image)
 	}
 
 	var description: some View {
@@ -60,7 +78,8 @@ struct ArticleCellView: View {
 #Preview {
 	ArticleCellView(
 		image: MockData.image(url: MockData.articles[0].urlToImage ?? ""),
-		article: MockData.articles[0]
+		article: MockData.articles[0],
+		screen: UIScreen.main
 	)
 	.preferredColorScheme(.dark)
 }

@@ -15,6 +15,7 @@ final class Router: RouterProtocol {
 
 	func routeToArticleView(article: ArticleModel, image: UIImage?) {
 		let vc = UIHostingController(rootView: ArticleView(image: image, article: article, screen: window.screen))
+		vc.title = "Article"
 		vc.navigationItem.backButtonTitle = ""
 		vc.navigationItem.largeTitleDisplayMode = .never
 		navController.pushViewController(vc, animated: true)
@@ -28,7 +29,7 @@ final class Router: RouterProtocol {
 	}
 
 	private func createHomeVC() -> HomeVC {
-		let home = HomeVC()
+		let home = HomeVC(screen: window.screen)
 		home.presenter = homePresenter
 
 		homePresenter.view = home

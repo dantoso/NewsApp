@@ -49,7 +49,7 @@ final class InteractorPresenterTests: XCTestCase {
 	func test_homePresenter_connection_to_HomeView() {
 		let router = MockRouter()
 		let presenter = HomePresenter(router: router)
-		let view = HomeVC()
+		let view = HomeVC(screen: .init())
 		let interactor = MockInteractor(output: presenter)
 
 		view.presenter = presenter
