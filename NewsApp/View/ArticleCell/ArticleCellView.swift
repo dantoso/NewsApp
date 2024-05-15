@@ -29,7 +29,7 @@ struct ArticleCellView: View {
 	}
 
 	var title: some View {
-		Text(article.title ?? "Untitled")
+		Text(article.title ?? String.titleIsNil)
 			.font(.system(size: 24, weight: .medium))
 			.multilineTextAlignment(.center)
 	}
@@ -51,7 +51,7 @@ struct ArticleCellView: View {
 	}
 
 	var author: some View {
-		Text("by \(article.author ?? "Unknown author")")
+		Text("\(String.byAuthor) \(article.author ?? String.authorIsNil)")
 			.font(.caption)
 			.opacity(0.8)
 	}

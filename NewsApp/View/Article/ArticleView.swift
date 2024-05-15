@@ -18,10 +18,13 @@ struct ArticleView: View {
 
 			TrackableScrollView(scrollOffset: $scrollOffset) {
 				VStack {
-					Text(article.content ?? "No further content provided.")
+					Text(article.content ?? String.contentIsNil)
 						.padding(.bottom)
 
-					Text("Unfortunately, to read the full article, I would have to implement a web scraping mechanism for each news website that my app would scrape, something I won't submit myself to do in 7 days.")
+					Text(String.lackOfContentNotice)
+						.padding(.bottom)
+
+					Text(String.loremIpsum)
 				}
 				.padding(.bottom, 100)
 				.padding()
@@ -45,7 +48,7 @@ struct ArticleView: View {
 
 	var date: some View {
 		let date = presenter.getFormattedDateString(from: article.publishedAt)
-		return Text("Published at \(date ?? "Unknown date")")
+		return Text("\(String.publishedAt) \(date ?? String.dateIsNil)")
 			.foregroundStyle(.secondary)
 			.font(.footnote)
 			.padding(10)

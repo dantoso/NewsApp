@@ -1,0 +1,14 @@
+import Foundation
+
+// MARK: Article View Strings
+extension String {
+	static let publishedAt = "Published at "
+
+	static let dateIsNil = "Unknown date"
+
+	static let contentIsNil = "No further content provided."
+
+	static let lackOfContentNotice = "Unfortunately, to read the full article, I would have to implement a web scraping mechanism for each news website that my app would scrape, something I won't submit myself to do in 7 days. So here is some lorem ipsum text so you can check how this view should work when its full."
+
+	static let loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non molestie arcu. Pellentesque vitae enim eu tortor sodales porta eu sed dolor. Donec bibendum cursus elit, a iaculis libero tempus eu. Integer rutrum commodo urna, eu aliquet nisl feugiat sit amet. Etiam eu felis sit amet mauris convallis posuere. Vivamus viverra dapibus cursus. Phasellus vel nisl sed enim sollicitudin sagittis nec at eros. Phasellus ut arcu nisi. Curabitur congue ultrices vestibulum. Nam commodo odio sed elit vestibulum sodales. Duis molestie ipsum at tortor convallis accumsan. Sed ut tempor dui. Mauris viverra velit ex, eu mattis ligula porta sit amet. In eu lobortis ipsum./nSed luctus malesuada arcu mattis tincidunt. Phasellus neque nisi, venenatis eu nunc nec, bibendum dignissim arcu. Pellentesque rhoncus purus sed massa maximus, accumsan pretium magna pulvinar. Etiam suscipit risus et ultricies tincidunt. Pellentesque id consectetur nulla. Aliquam cursus mauris quis venenatis scelerisque. Etiam vitae mauris metus. Aliquam sed vestibulum dolor. Vivamus neque nulla, sodales nec vestibulum non, rhoncus ac leo. Vivamus semper purus vel orci porta viverra. Nam hendrerit est neque, et lobortis dui consequat ac. Donec auctor mauris in leo varius sodales. Vivamus vel gravida est. Aenean at finibus mi, ac condimentum dui. Maecenas tempor sem urna, quis fermentum erat blandit ut. Maecenas tempus augue quis justo venenatis pulvinar./nIn ac ultricies neque. Sed non metus in orci rhoncus facilisis. Nulla tincidunt sem nec est viverra interdum. Ut vel quam vel leo euismod luctus. Proin pharetra eros sed malesuada consequat. Mauris bibendum maximus nisi sit amet pulvinar. Praesent et lectus quam. Curabitur sit amet arcu ante. Vestibulum tellus nulla, tincidunt non ornare eu, rhoncus vel diam./nVestibulum a mauris ipsum. Etiam vulputate justo ac metus efficitur pellentesque. Etiam nisl sem, viverra ac commodo ornare, placerat condimentum eros. Curabitur vel purus ac magna venenatis feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras ut turpis non libero bibendum venenatis. Nullam tincidunt lectus risus, quis euismod sapien congue non. Maecenas ac tellus sit amet quam laoreet varius in eu magna. Cras quis felis vitae tellus pellentesque pulvinar ut id tortor."
+}
