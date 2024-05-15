@@ -13,6 +13,9 @@ final class MockInteractorOutput: InteractorOutputProtocol {
 		self.imageFetchCompletion = imageFetchCompletion
 	}
 
+	private (set) var onFetchNewsResultCount = 0
+	private (set) var onImageRequestResultCount = 0
+
 	func onFetchNewsResult(_ result: Result<ResponseModel, Error>) {
 		newsFetchCompletion(result)
 	}

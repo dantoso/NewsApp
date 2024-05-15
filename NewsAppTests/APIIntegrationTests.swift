@@ -7,7 +7,7 @@ final class APIIntegrationTests: XCTestCase {
 
     override func tearDownWithError() throws { }
 
-	func testInteractorNewsAPICall() {
+	func test_interactor_newsAPICall() {
 		let expectation = XCTestExpectation(description: "Wait for news request")
 
 		let presenter = MockInteractorOutput { result in
@@ -27,6 +27,6 @@ final class APIIntegrationTests: XCTestCase {
 
 		interactor.fetchNews()
 
-		wait(for: [expectation], timeout: 15)
+		wait(for: [expectation], timeout: 2)
 	}
 }
