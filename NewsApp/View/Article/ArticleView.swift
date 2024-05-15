@@ -29,18 +29,20 @@ struct ArticleView: View {
 					Text(String.loremIpsum)
 				}
 				.padding(.bottom, 100)
-				.padding()
-				.background {
-					RoundedRectangle(cornerRadius: 24)
-						.fill(.thinMaterial)
-				}
+				.ignoresSafeArea()
 
 			}
-			.padding(.top, 170)
+			.padding()
+			.background {
+				RoundedRectangle(cornerRadius: 24)
+					.fill(.thinMaterial)
+					.offset(y: scrollOffset.dy < 0 ? 0 : scrollOffset.dy)
+					.ignoresSafeArea()
+			}
+			.padding(.top, screen.bounds.height*0.2)
 
 			animatedDate
 		}
-		.ignoresSafeArea()
 	}
 
 	var animatedImage: some View {
@@ -68,10 +70,10 @@ struct ArticleView: View {
 					.fill(.ultraThinMaterial)
 			}
 			.padding()
-			.padding(.top, 42)
+			.padding(.top)
 			.offset(y: mult < 80 ? mult*0.5 : 40)
-			.opacity(mult < 20 ? 1 : CGFloat(2 - mult/20))
-			.blur(radius: mult < 25 ? 0 : mult/25)
+			.opacity(mult < 8 ? 1 : CGFloat(2 - mult/8))
+			.blur(radius: mult < 10 ? 0 : mult/10)
 	}
 
 }

@@ -16,6 +16,7 @@ final class Router: RouterProtocol {
 	func routeToArticleView(article: ArticleModel, image: UIImage?) {
 		let vc = UIHostingController(rootView: ArticleView(image: image, article: article, screen: window.screen))
 		vc.navigationItem.backButtonTitle = ""
+		vc.navigationItem.largeTitleDisplayMode = .never
 		navController.pushViewController(vc, animated: true)
 	}
 
@@ -29,7 +30,6 @@ final class Router: RouterProtocol {
 	private func createHomeVC() -> HomeVC {
 		let home = HomeVC()
 		home.presenter = homePresenter
-		home.navigationItem.backButtonTitle = ""
 
 		homePresenter.view = home
 		homePresenter.interactor = interactor
@@ -39,11 +39,6 @@ final class Router: RouterProtocol {
 
 	private func setupNavController() {
 		navController.viewControllers = [createHomeVC()]
-
-		let backImage = UIImage(systemName: "chevron.backward.circle.fill")
-
-		let appearance = UINavigationBar.appearance()
-		appearance.backIndicatorImage = backImage
-		appearance.backIndicatorTransitionMaskImage = backImage
+		navController.navigationBar.prefersLargeTitles = true
 	}
 }

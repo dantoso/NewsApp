@@ -12,10 +12,37 @@ final class HomeVC: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		title = "Today's news"
+		navigationItem.largeTitleDisplayMode = .always
+		navigationItem.backButtonTitle = ""
+
 		addProgressView()
 
 		presenter?.startFetchingNews()
 	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		let appearance = UINavigationBarAppearance()
+		appearance.configureWithDefaultBackground()
+		
+		navigationController?.navigationBar.standardAppearance = appearance
+		navigationController?.navigationBar.scrollEdgeAppearance = appearance
+		navigationController?.navigationBar.compactAppearance = appearance
+
+		super.viewWillAppear(animated)
+	}
+
+//	override func viewWillDisappear(_ animated: Bool) {
+//		let appearance = UINavigationBarAppearance()
+//		appearance.configureWithTransparentBackground()
+//
+//		navigationController?.navigationBar.standardAppearance = appearance
+//		navigationController?.navigationBar.scrollEdgeAppearance = appearance
+//		navigationController?.navigationBar.compactAppearance = appearance
+//
+//		super.viewWillDisappear(animated)
+//	}
 
 	private func addProgressView() {
 		progressView.hidesWhenStopped = true
@@ -49,7 +76,8 @@ final class HomeVC: UIViewController {
 		tableView.register(ArticleCell.self, forCellReuseIdentifier: ArticleCell.identifier)
 		tableView.delegate = self
 		tableView.dataSource = self
-		
+		tableView.separatorStyle = .none
+
 		return tableView
 	}
 
@@ -86,11 +114,11 @@ extension HomeVC: HomeViewProtocol {
 
 extension HomeVC: UITableViewDataSource {
 
-	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-		return 20
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 15
 	}
 
-	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let view = UIView()
 		view.backgroundColor = UIColor.clear
 		return view
