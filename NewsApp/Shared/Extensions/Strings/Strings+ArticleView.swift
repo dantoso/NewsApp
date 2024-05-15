@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: Article View Strings
 extension String {
-	static let publishedAt = "Published at "
+	static let publishedAt = "Published at"
 
 	static let dateIsNil = "Unknown date"
 

@@ -14,7 +14,7 @@ final class Router: RouterProtocol {
 	}
 
 	func routeToArticleView(article: ArticleModel, image: UIImage?) {
-		let vc = UIHostingController(rootView: ArticleView(image: image, article: article))
+		let vc = UIHostingController(rootView: ArticleView(image: image, article: article, screen: window.screen))
 		vc.navigationItem.backButtonTitle = ""
 		navController.pushViewController(vc, animated: true)
 	}

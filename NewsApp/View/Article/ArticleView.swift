@@ -5,6 +5,8 @@ struct ArticleView: View {
 	let article: ArticleModel
 	let presenter = ArticlePresenter()
 
+	let screen: UIScreen
+
 	@State private var scrollOffset: CGVector = .zero
 
 	var mult: CGFloat {
@@ -14,7 +16,13 @@ struct ArticleView: View {
 	var body: some View {
 		ZStack(alignment: .topTrailing) {
 			LoadingImage(hasURL: article.urlToImage != nil, image: image)
-				.offset(y: -mult)
+				.aspectRatio(contentMode: .fill)
+				.frame(width: screen.bounds.width, height: screen.bounds.height*0.3)
+				.mask {
+					Rectangle()
+						.frame(width: screen.bounds.width, height: screen.bounds.height*0.3)
+				}
+				.offset(y: mult < 70 ? -mult : -70)
 
 			TrackableScrollView(scrollOffset: $scrollOffset) {
 				VStack {
@@ -63,7 +71,8 @@ struct ArticleView: View {
 #Preview {
 	ArticleView(
 		image: MockData.image(url: MockData.articles[0].urlToImage ?? ""),
-		article: MockData.articles[0]
+		article: MockData.articles[0],
+		screen: UIScreen.main
 	)
 	.preferredColorScheme(.dark)
 }
