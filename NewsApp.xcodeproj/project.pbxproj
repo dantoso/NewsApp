@@ -17,6 +17,7 @@
 		FB1477AE2BF4EF97000E8CF8 /* MockInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1477AD2BF4EF97000E8CF8 /* MockInteractor.swift */; };
 		FB1477B12BF4F339000E8CF8 /* NewsAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1477B02BF4F339000E8CF8 /* NewsAPIError.swift */; };
 		FB1477B32BF4F4CB000E8CF8 /* InteractorPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1477B22BF4F4CB000E8CF8 /* InteractorPresenterTests.swift */; };
+		FB1477B52BF4FB4E000E8CF8 /* MockRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1477B42BF4FB4E000E8CF8 /* MockRouter.swift */; };
 		FB4A335F2BEFA6E000BFFBBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A335E2BEFA6E000BFFBBD /* AppDelegate.swift */; };
 		FB4A33612BEFA6E000BFFBBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A33602BEFA6E000BFFBBD /* SceneDelegate.swift */; };
 		FB4A33632BEFA6E000BFFBBD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A33622BEFA6E000BFFBBD /* HomeVC.swift */; };
@@ -74,6 +75,7 @@
 		FB1477AD2BF4EF97000E8CF8 /* MockInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockInteractor.swift; sourceTree = "<group>"; };
 		FB1477B02BF4F339000E8CF8 /* NewsAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIError.swift; sourceTree = "<group>"; };
 		FB1477B22BF4F4CB000E8CF8 /* InteractorPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorPresenterTests.swift; sourceTree = "<group>"; };
+		FB1477B42BF4FB4E000E8CF8 /* MockRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRouter.swift; sourceTree = "<group>"; };
 		FB4A335B2BEFA6E000BFFBBD /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB4A335E2BEFA6E000BFFBBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB4A33602BEFA6E000BFFBBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				FBEC2BD92BF146760089FD04 /* Router.swift */,
+				FB1477B42BF4FB4E000E8CF8 /* MockRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				FB64E2B92BF2AA5600F3FE9F /* ArticleView.swift in Sources */,
 				FBEC2BDC2BF149260089FD04 /* HomePresenter.swift in Sources */,
 				FB64E2B22BF26AB400F3FE9F /* ArticleCellView.swift in Sources */,
+				FB1477B52BF4FB4E000E8CF8 /* MockRouter.swift in Sources */,
 				FBFAD30F2BF03990001C4D0C /* ArticleModel.swift in Sources */,
 				FBFAD3132BF03B8E001C4D0C /* ResponseModel.swift in Sources */,
 			);

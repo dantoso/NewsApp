@@ -52,6 +52,10 @@ final class HomeVC: UIViewController {
 		
 		return tableView
 	}
+
+	func getData() -> (articles: [ArticleModel], images: [Int: UIImage]) {
+		return (data, images)
+	}
 }
 
 extension HomeVC: HomeViewProtocol {
