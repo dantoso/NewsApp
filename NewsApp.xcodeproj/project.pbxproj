@@ -141,7 +141,6 @@
 				FB4A33742BEFA6E100BFFBBD /* NewsAppTests */,
 				FB4A337E2BEFA6E100BFFBBD /* NewsAppUITests */,
 				FB4A335C2BEFA6E000BFFBBD /* Products */,
-				FBA7B8292BF5356200E8591F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -251,13 +250,6 @@
 				FB046DC32BF3DA3D007B6AF7 /* TrackableScrollView.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		FBA7B8292BF5356200E8591F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		FBEC2BD52BF138BF0089FD04 /* Presenter */ = {
