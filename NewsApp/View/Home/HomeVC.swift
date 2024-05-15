@@ -5,10 +5,10 @@ final class HomeVC: UIViewController {
 	private lazy var newsFeed: UITableView = createNewsFeed()
 	private lazy var progressView = UIActivityIndicatorView(frame: view.bounds)
 
-	weak var presenter: HomePresenterProtocol?
+	private var data: [ArticleModel] = []
+	private var images: [Int: UIImage] = [:]
 
-	var data: [ArticleModel] = []
-	var images: [Int: UIImage] = [:]
+	weak var presenter: HomePresenterProtocol?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
