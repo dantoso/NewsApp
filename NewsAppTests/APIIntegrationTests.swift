@@ -1,7 +1,7 @@
 import XCTest
 @testable import NewsApp
 
-final class NewsAppTests: XCTestCase {
+final class APIIntegrationTests: XCTestCase {
 
     override func setUpWithError() throws { }
 
@@ -10,7 +10,7 @@ final class NewsAppTests: XCTestCase {
 	func testInteractorNewsAPICall() {
 		let expectation = XCTestExpectation(description: "Wait for news request")
 
-		let presenter = InteractorOutputMock { result in
+		let presenter = MockInteractorOutput { result in
 			switch result {
 			case .success(let success):
 				print(success.status)

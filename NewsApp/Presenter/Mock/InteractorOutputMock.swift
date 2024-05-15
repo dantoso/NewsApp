@@ -1,6 +1,6 @@
 import Foundation
 
-final class InteractorOutputMock: InteractorOutputProtocol {
+final class MockInteractorOutput: InteractorOutputProtocol {
 
 	let newsFetchCompletion: (Result<ResponseModel, Error>) -> Void
 	let imageFetchCompletion: (Result<Data, Error>) -> Void

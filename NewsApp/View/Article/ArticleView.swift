@@ -59,8 +59,8 @@ struct ArticleView: View {
 
 #Preview {
 	ArticleView(
-		image: UIImage(named: "HylicsWayne"),
-		article: MockEntities.article
+		image: MockData.image(url: MockData.articles[0].urlToImage ?? ""),
+		article: MockData.articles[0]
 	)
 	.preferredColorScheme(.dark)
 }
