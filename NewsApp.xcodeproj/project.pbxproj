@@ -116,13 +116,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8A5BA7DF0574A2EB92768F5D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		FB046DC72BF3F5B1007B6AF7 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,7 +139,6 @@
 				FB4A33742BEFA6E100BFFBBD /* NewsAppTests */,
 				FB4A337E2BEFA6E100BFFBBD /* NewsAppUITests */,
 				FB4A335C2BEFA6E000BFFBBD /* Products */,
-				8A5BA7DF0574A2EB92768F5D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
