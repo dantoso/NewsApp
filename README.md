@@ -23,5 +23,8 @@ I used the VIPER architecture to structure the project, so the app can be dissec
 - Entity: components that represent data
 - Router: components that implement the app's view cycle and navigation
 
-Besides the layers, VIPER also has another very important feature, which is that all layers (except the Entity layer) must communicate with each other through protocols. In other words: it is a Protocol Oriented architecture. Which is very important for testing
+Besides the layers, VIPER also has another very important feature, which is that all layers (except the Entity layer) must communicate with each other through protocols. In other words: it is a Protocol Oriented architecture, which is very powerful for testing and scalability.
 
+## Why VIPER?
+
+Yes, the project is very small, so there is no material need for me to use such a robust architecture like VIPER. I'm well aware its overkill. However, this project was made as part of a challenge, so in order for me to show the people who challenged me that I can do VIPER stuff, I did it. Also, its good for my portfolio, I think this is the first VIPER project that I put on github.
