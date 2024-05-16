@@ -1,10 +1,10 @@
 import Foundation
-import Alamofire
 
 struct NewsAPIInteractor: InteractorInputProtocol {
 
 	let presenter: InteractorOutputProtocol
 	let endpoint = "https://newsapi.org/v2/top-headlines?country=us&pageSize=100"
+	let apiKeyHeader = "Authorization"
 
 	var apiKey: String? {
 		let key = Bundle.main.object(forInfoDictionaryKey: "NEWS_API_KEY") as? String
@@ -13,42 +13,58 @@ struct NewsAPIInteractor: InteractorInputProtocol {
 	}
 
 	func fetchNews() {
-		guard let apiKey else { fatalError("ERROR: Could not get API key in plist file") }
+		guard let apiKey else {
+			return presenter.onFetchNewsResult(.failure(NewsAPIError.missingKey))
+		}
 
-		let headers: HTTPHeaders = ["Authorization": apiKey]
+		guard let url = URL(string: endpoint) else {
+			return presenter.onFetchNewsResult(.failure(NewsAPIError.wrongEndpointFormat))
+		}
 
 		Task {
-			let result: Result<ResponseModel, Error>
+			var request = URLRequest(url: url)
+			request.setValue(apiKey, forHTTPHeaderField: apiKeyHeader)
 
+			let session = URLSession.shared
 			do {
-				let response = try await AF
-					.request(endpoint, method: .get, headers: headers)
-					.serializingDecodable(ResponseModel.self).value
+				let (data, response) = try await session.data(for: request)
+				let model = try decodeData(data: data)
 
-				result = .success(response)
+				presenter.onFetchNewsResult(.success(model))
+
 			} catch let error {
-				result = .failure(error)
+				if error is NewsAPIError {
+					return presenter.onFetchNewsResult(.failure(error))
+				}
+				presenter.onFetchNewsResult(.failure(NewsAPIError.requestFailed))
 			}
-
-			presenter.onFetchNewsResult(result)
 		}
 	}
 	
 	func fetchImage(url: String, idx: Int) {
+		guard let url = URL(string: url) else {
+			return presenter.onImageRequestResult(.failure(NewsAPIError.wrongEndpointFormat), idx: idx)
+		}
+
 		Task {
-			let result: Result<Data, Error>
-
+			var request = URLRequest(url: url)
+			let session = URLSession.shared
 			do {
-				let response = try await AF
-					.request(url, method: .get)
-					.serializingData().value
-
-				result = .success(response)
-			} catch let error {
-				result = .failure(error)
+				let (data, response) = try await session.data(for: request)
+				presenter.onImageRequestResult(.success(data), idx: idx)
+			} catch {
+				presenter.onImageRequestResult(.failure(NewsAPIError.imageNotFound), idx: idx)
 			}
+		}
+	}
 
-			presenter.onImageRequestResult(result, idx: idx)
+	func decodeData(data: Data) throws -> ResponseModel {
+		let decoder = JSONDecoder()
+		do {
+			let response = try decoder.decode(ResponseModel.self, from: data)
+			return response
+		} catch {
+			throw NewsAPIError.decodeFailed
 		}
 	}
 }

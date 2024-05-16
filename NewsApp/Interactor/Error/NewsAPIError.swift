@@ -4,7 +4,8 @@ enum NewsAPIError: Error {
 	case imageNotFound
 	case corruptedImage
 	case articlesNotFound
-	case conectionError
-	case badRequest
+	case decodeFailed
+	case requestFailed
 	case missingKey
+	case wrongEndpointFormat
 }
