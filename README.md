@@ -1,6 +1,6 @@
 # News App
 
-This is a simple app made as part of a 7 day challenge. The app consumes the _newsapi.org_ and displays part of its content in a home screen and an article screen, both being beautifully designed and animated.
+This is a simple app made as part of a 7 day challenge. The app consumes the _newsapi.org_ and displays its fetched content in a home screen and an article screen, both being beautifully designed and animated.
 
 <img width="408" alt="Captura de Tela 2024-05-15 às 23 32 45" src="https://github.com/dantoso/NewsApp/assets/80010223/4a934200-18dc-40d1-8359-84183f19c943">
 
