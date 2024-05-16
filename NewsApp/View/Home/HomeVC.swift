@@ -43,17 +43,6 @@ final class HomeVC: UIViewController {
 		super.viewWillAppear(animated)
 	}
 
-//	override func viewWillDisappear(_ animated: Bool) {
-//		let appearance = UINavigationBarAppearance()
-//		appearance.configureWithTransparentBackground()
-//
-//		navigationController?.navigationBar.standardAppearance = appearance
-//		navigationController?.navigationBar.scrollEdgeAppearance = appearance
-//		navigationController?.navigationBar.compactAppearance = appearance
-//
-//		super.viewWillDisappear(animated)
-//	}
-
 	private func addProgressView() {
 		progressView.hidesWhenStopped = true
 		view.addSubview(progressView)
