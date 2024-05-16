@@ -58,23 +58,22 @@ final class InteractorPresenterTests: XCTestCase {
 		interactor.fetchNews()
 
 		let data = view.getData()
-		XCTAssert(!data.articles.isEmpty)
-		XCTAssert(data.images.isEmpty)
-		for i in 0..<data.articles.count {
-			let article = data.articles[i]
+		XCTAssert(!data.isEmpty)
+		for i in 0..<data.count {
+			let article = data[i]
 			XCTAssert(article.title == MockData.articles[i].title)
+			XCTAssertNil(article.image)
 
-			if let url = article.urlToImage {
+			if let url = article.imageURL {
 				interactor.fetchImage(url: url, idx: i)
 			}
 		}
 
 		let newData = view.getData()
-		XCTAssert(!newData.articles.isEmpty)
-		XCTAssert(!newData.images.isEmpty)
-		for i in 0..<data.images.count {
-			if newData.articles[i].urlToImage != nil {
-				XCTAssertNotNil(newData.images[i])
+		XCTAssert(!newData.isEmpty)
+		for i in 0..<newData.count {
+			if newData[i].imageURL != nil {
+				XCTAssertNotNil(newData[i].image)
 			}
 		}
 	}

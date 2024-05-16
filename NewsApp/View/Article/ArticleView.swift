@@ -1,10 +1,7 @@
 import SwiftUI
 
 struct ArticleView: View {
-	let image: UIImage?
-	let article: ArticleModel
-	let presenter = ArticlePresenter()
-
+	@State var article: ArticleViewModel
 	let screen: UIScreen
 
 	@State private var scrollOffset: CGVector = .zero
@@ -49,7 +46,7 @@ struct ArticleView: View {
 		let imageSpace = CGSize(width: screen.bounds.width, height: screen.bounds.height*0.3)
 		let imageMoveLimit = imageSpace.height*0.28
 
-		return LoadingImage(hasURL: article.urlToImage != nil, image: image)
+		return LoadingImage(hasURL: article.imageURL != nil, image: article.image)
 			.aspectRatio(contentMode: .fill)
 			.frame(width: imageSpace.width, height: imageSpace.height)
 			.mask {
@@ -60,8 +57,7 @@ struct ArticleView: View {
 	}
 
 	var animatedDate: some View {
-		let date = presenter.getFormattedDateString(from: article.publishedAt)
-		return Text("\(String.publishedAt) \(date ?? String.dateIsNil)")
+		return Text("\(String.publishedAt) \(article.dateString ?? String.dateIsNil)")
 			.foregroundStyle(.secondary)
 			.font(.footnote)
 			.padding(10)
@@ -80,8 +76,7 @@ struct ArticleView: View {
 
 #Preview {
 	ArticleView(
-		image: MockData.image(url: MockData.articles[0].urlToImage ?? ""),
-		article: MockData.articles[0],
+		article: ArticleViewModel(model: MockData.articles[0], index: 0),
 		screen: UIScreen.main
 	)
 	.preferredColorScheme(.dark)

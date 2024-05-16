@@ -18,14 +18,14 @@ final class HomePresenter: HomePresenterProtocol, InteractorOutputProtocol {
 		interactor?.fetchImage(url: url, idx: idx)
 	}
 	
-	func onNavigationRequest(to article: ArticleModel, with image: UIImage?) {
-		router?.routeToArticleView(article: article, image: image)
+	func onNavigationRequest(to article: ArticleViewModel) {
+		router?.routeToArticleView(article: article)
 	}
-	
+
 	func onFetchNewsResult(_ result: Result<ResponseModel, any Error>) {
 		switch result {
 		case .success(let success):
-			let articles = filterRemovedAndEmptyArticles(articles: success.articles)
+			let articles = getViewModelFromData(data: success.articles)
 			view?.onNewsReceived(articles: articles)
 
 		case .failure(let failure):
@@ -39,6 +39,7 @@ final class HomePresenter: HomePresenterProtocol, InteractorOutputProtocol {
 		case .success(let data):
 			if let image = UIImage(data: data) {
 				view?.onImageReceived(image: image, idx: idx)
+				router?.updateImageOnArticleView(image: image, idx: idx)
 			} else {
 				view?.onErrorReceived(message: "Data received could not be converted to image")
 			}
@@ -48,12 +49,16 @@ final class HomePresenter: HomePresenterProtocol, InteractorOutputProtocol {
 		}
 	}
 
-	func filterRemovedAndEmptyArticles(articles: [ArticleModel]) -> [ArticleModel] {
-		let filtered = articles.filter { article in
-			let title = article.title
-			return title != nil && title != "[Removed]"
+	func getViewModelFromData(data: [ArticleModel]) -> [ArticleViewModel] {
+		var idx = 0
+		let articles: [ArticleViewModel] = data.compactMap { model in
+			let title = model.title
+			guard title != nil && title != "[Removed]" else { return nil }
+
+			idx += 1
+			return ArticleViewModel(model: model, index: idx)
 		}
 
-		return filtered
+		return articles
 	}
 }

@@ -2,8 +2,7 @@ import SwiftUI
 
 struct ArticleCellView: View {
 
-	let image: UIImage?
-	let article: ArticleModel
+	let article: ArticleViewModel
 	let screen: UIScreen
 
 	var body: some View {
@@ -49,7 +48,7 @@ struct ArticleCellView: View {
 	}
 
 	var imageView: some View {
-		LoadingImage(hasURL: article.urlToImage != nil, image: image)
+		LoadingImage(hasURL: article.imageURL != nil, image: article.image)
 	}
 
 	var description: some View {
@@ -77,8 +76,7 @@ struct ArticleCellView: View {
 
 #Preview {
 	ArticleCellView(
-		image: MockData.image(url: MockData.articles[0].urlToImage ?? ""),
-		article: MockData.articles[0],
+		article: ArticleViewModel(model: MockData.articles[0], index: 0),
 		screen: UIScreen.main
 	)
 	.preferredColorScheme(.dark)

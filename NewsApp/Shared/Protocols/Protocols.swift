@@ -2,18 +2,19 @@ import UIKit
 
 protocol HomeViewProtocol: AnyObject {
 	func onErrorReceived(message: String)
-	func onNewsReceived(articles: [ArticleModel])
+	func onNewsReceived(articles: [ArticleViewModel])
 	func onImageReceived(image: UIImage, idx: Int)
 }
 
 protocol HomePresenterProtocol: AnyObject {
 	func startFetchingNews()
 	func startImageFetch(url: String, idx: Int)
-	func onNavigationRequest(to: ArticleModel, with image: UIImage?)
+	func onNavigationRequest(to: ArticleViewModel)
 }
 
 protocol RouterProtocol: AnyObject {
-	func routeToArticleView(article: ArticleModel, image: UIImage?)
+	func routeToArticleView(article: ArticleViewModel)
+	func updateImageOnArticleView(image: UIImage, idx: Int)
 }
 
 protocol InteractorInputProtocol {

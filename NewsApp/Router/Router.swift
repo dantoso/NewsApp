@@ -13,12 +13,20 @@ final class Router: RouterProtocol {
 		self.window = window
 	}
 
-	func routeToArticleView(article: ArticleModel, image: UIImage?) {
-		let vc = UIHostingController(rootView: ArticleView(image: image, article: article, screen: window.screen))
+	func routeToArticleView(article: ArticleViewModel) {
+		let vc = UIHostingController(rootView: ArticleView(article: article, screen: window.screen))
 		vc.title = "Article"
 		vc.navigationItem.backButtonTitle = ""
 		vc.navigationItem.largeTitleDisplayMode = .never
 		navController.pushViewController(vc, animated: true)
+	}
+
+	func updateImageOnArticleView(image: UIImage, idx: Int) {
+		Task { @MainActor in
+			guard let vc = navController.topViewController as? UIHostingController<ArticleView> else { return }
+			guard vc.rootView.article.index == idx else { return }
+			vc.rootView.article.image = image
+		}
 	}
 
 	func startApp() {
