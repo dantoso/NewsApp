@@ -63,6 +63,7 @@ final class InteractorPresenterTests: XCTestCase {
 			let article = data[i]
 			XCTAssertNotNil(article.title)
 			XCTAssertNil(article.image)
+			XCTAssert(article.title != "[Removed]")
 
 			if let url = article.imageURL {
 				interactor.fetchImage(url: url, idx: i)
