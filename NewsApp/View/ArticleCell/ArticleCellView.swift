@@ -17,7 +17,7 @@ struct ArticleCellView: View {
 						RoundedRectangle(cornerRadius: 8)
 					}
 					.padding(.horizontal, 24)
-					.padding(.bottom, 56)
+					.padding(.bottom, 80)
 
 				description
 					.padding(.horizontal, 12)
