@@ -5,7 +5,7 @@ struct MockInteractor: InteractorInputProtocol {
 	let output: InteractorOutputProtocol
 
 	func fetchNews() {
-		let response = ResponseModel(status: "ok", totalResults: 1, articles: MockData.articles)
+		let response = ResponseModel(status: "ok", totalResults: MockData.articles.count, articles: MockData.articles)
 		output.onFetchNewsResult(.success(response))
 	}
 	

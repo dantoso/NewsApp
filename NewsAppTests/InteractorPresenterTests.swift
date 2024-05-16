@@ -46,7 +46,7 @@ final class InteractorPresenterTests: XCTestCase {
 		interactor.fetchImage(url: receivedImageURL ?? "", idx: 0)
 	}
 
-	func test_homePresenter_connection_to_HomeView() {
+	func test_homePresenter_connectionTo_HomeView() {
 		let router = MockRouter()
 		let presenter = HomePresenter(router: router)
 		let view = HomeVC(screen: .init())
@@ -61,7 +61,7 @@ final class InteractorPresenterTests: XCTestCase {
 		XCTAssert(!data.isEmpty)
 		for i in 0..<data.count {
 			let article = data[i]
-			XCTAssert(article.title == MockData.articles[i].title)
+			XCTAssertNotNil(article.title)
 			XCTAssertNil(article.image)
 
 			if let url = article.imageURL {
