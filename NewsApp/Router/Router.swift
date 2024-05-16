@@ -25,7 +25,9 @@ final class Router: RouterProtocol {
 		Task { @MainActor in
 			guard let vc = navController.topViewController as? UIHostingController<ArticleView> else { return }
 			guard vc.rootView.article.index == idx else { return }
-			vc.rootView.article.image = image
+			
+			let article = ArticleViewModel(viewModel: vc.rootView.article, updatingImage: image)
+			vc.rootView = ArticleView(article: article, screen: window.screen)
 		}
 	}
 

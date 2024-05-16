@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ArticleView: View {
-	@State var article: ArticleViewModel
+	let article: ArticleViewModel
 	let screen: UIScreen
 
 	@State private var scrollOffset: CGVector = .zero

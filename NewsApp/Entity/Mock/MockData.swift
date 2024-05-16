@@ -20,9 +20,9 @@ struct MockData {
 	static func getViewModels() -> [ArticleViewModel] {
 		var idx = 0
 		let vms = articles.map { model in
-			idx += 1
 			var article = ArticleViewModel(model: model, index: idx)
 			article.image = image(url: model.urlToImage ?? "")
+			idx += 1
 
 			return article
 		}

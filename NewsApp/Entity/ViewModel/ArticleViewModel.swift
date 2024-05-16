@@ -37,4 +37,9 @@ struct ArticleViewModel {
 		self.author = model.author
 		self.isoDate = model.publishedAt
 	}
+
+	init(viewModel: ArticleViewModel, updatingImage image: UIImage) {
+		self = viewModel
+		self.image = image
+	}
 }

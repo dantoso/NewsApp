@@ -55,8 +55,10 @@ final class HomePresenter: HomePresenterProtocol, InteractorOutputProtocol {
 			let title = model.title
 			guard title != nil && title != "[Removed]" else { return nil }
 
+			let vm = ArticleViewModel(model: model, index: idx)
 			idx += 1
-			return ArticleViewModel(model: model, index: idx)
+			
+			return vm
 		}
 
 		return articles
