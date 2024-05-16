@@ -46,7 +46,7 @@ final class InteractorPresenterTests: XCTestCase {
 		interactor.fetchImage(url: receivedImageURL ?? "", idx: 0)
 	}
 
-	func test_homePresenter_connection_to_HomeView() {
+	func test_homePresenter_connectionTo_HomeView() {
 		let router = MockRouter()
 		let presenter = HomePresenter(router: router)
 		let view = HomeVC(screen: .init())
@@ -58,23 +58,23 @@ final class InteractorPresenterTests: XCTestCase {
 		interactor.fetchNews()
 
 		let data = view.getData()
-		XCTAssert(!data.articles.isEmpty)
-		XCTAssert(data.images.isEmpty)
-		for i in 0..<data.articles.count {
-			let article = data.articles[i]
-			XCTAssert(article.title == MockData.articles[i].title)
+		XCTAssert(!data.isEmpty)
+		for i in 0..<data.count {
+			let article = data[i]
+			XCTAssertNotNil(article.title)
+			XCTAssertNil(article.image)
+			XCTAssert(article.title != "[Removed]")
 
-			if let url = article.urlToImage {
+			if let url = article.imageURL {
 				interactor.fetchImage(url: url, idx: i)
 			}
 		}
 
 		let newData = view.getData()
-		XCTAssert(!newData.articles.isEmpty)
-		XCTAssert(!newData.images.isEmpty)
-		for i in 0..<data.images.count {
-			if newData.articles[i].urlToImage != nil {
-				XCTAssertNotNil(newData.images[i])
+		XCTAssert(!newData.isEmpty)
+		for i in 0..<newData.count {
+			if newData[i].imageURL != nil {
+				XCTAssertNotNil(newData[i].image)
 			}
 		}
 	}

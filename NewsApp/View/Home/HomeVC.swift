@@ -5,8 +5,7 @@ final class HomeVC: UIViewController {
 	private lazy var newsFeed: UITableView = createNewsFeed()
 	private lazy var progressView = UIActivityIndicatorView(frame: view.bounds)
 
-	private var data: [ArticleModel] = []
-	private var images: [Int: UIImage] = [:]
+	private var data: [ArticleViewModel] = []
 
 	weak var presenter: HomePresenterProtocol?
 
@@ -92,8 +91,8 @@ final class HomeVC: UIViewController {
 		return tableView
 	}
 
-	func getData() -> (articles: [ArticleModel], images: [Int: UIImage]) {
-		return (data, images)
+	func getData() -> [ArticleViewModel] {
+		return data
 	}
 }
 
@@ -104,9 +103,9 @@ extension HomeVC: HomeViewProtocol {
 		print(message)
 	}
 	
-	func onNewsReceived(articles: [ArticleModel]) {
+	func onNewsReceived(articles: [ArticleViewModel]) {
 		data = articles
-		DispatchQueue.main.async {
+		Task { @MainActor in
 			self.addNewsFeed()
 		}
 	}
@@ -114,9 +113,9 @@ extension HomeVC: HomeViewProtocol {
 	func onImageReceived(image: UIImage, idx: Int) {
 		print("got image at \(idx)")
 
-		images.updateValue(image, forKey: idx)
+		data[idx].image = image
 
-		DispatchQueue.main.async {
+		Task { @MainActor in
 			let path = IndexPath(row: 0, section: idx)
 			self.newsFeed.reconfigureRows(at: [path])
 		}
@@ -149,10 +148,9 @@ extension HomeVC: UITableViewDataSource {
 		else { fatalError("Could not find reusable NewsCell for \(indexPath)") }
 
 		let article = data[indexPath.section]
-		let image = images[indexPath.section]
-		cell.configure(article: article, image: image, screen: screen)
+		cell.configure(article: article, screen: screen)
 
-		if let urlToImage = article.urlToImage, image == nil {
+		if let urlToImage = article.imageURL, article.image == nil {
 			presenter?.startImageFetch(url: urlToImage, idx: indexPath.section)
 		}
 
@@ -165,7 +163,6 @@ extension HomeVC: UITableViewDataSource {
 extension HomeVC: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let article = data[indexPath.section]
-		let image = images[indexPath.section]
-		presenter?.onNavigationRequest(to: article, with: image)
+		presenter?.onNavigationRequest(to: article)
 	}
 }

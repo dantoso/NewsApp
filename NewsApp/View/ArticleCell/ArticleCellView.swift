@@ -2,8 +2,7 @@ import SwiftUI
 
 struct ArticleCellView: View {
 
-	let image: UIImage?
-	let article: ArticleModel
+	let article: ArticleViewModel
 	let screen: UIScreen
 
 	var body: some View {
@@ -17,7 +16,7 @@ struct ArticleCellView: View {
 						RoundedRectangle(cornerRadius: 8)
 					}
 					.padding(.horizontal, 24)
-					.padding(.bottom, 56)
+					.padding(.bottom, 80)
 
 				description
 					.padding(.horizontal, 12)
@@ -49,7 +48,7 @@ struct ArticleCellView: View {
 	}
 
 	var imageView: some View {
-		LoadingImage(hasURL: article.urlToImage != nil, image: image)
+		LoadingImage(hasURL: article.imageURL != nil, image: article.image)
 	}
 
 	var description: some View {
@@ -70,16 +69,18 @@ struct ArticleCellView: View {
 
 	var author: some View {
 		Text("\(String.byAuthor) \(article.author ?? String.authorIsNil)")
+			.multilineTextAlignment(.center)
 			.font(.caption)
 			.opacity(0.8)
 	}
 }
 
 #Preview {
+
 	ArticleCellView(
-		image: MockData.image(url: MockData.articles[0].urlToImage ?? ""),
-		article: MockData.articles[0],
+		article: MockData.getViewModels()[0],
 		screen: UIScreen.main
 	)
 	.preferredColorScheme(.dark)
+
 }
