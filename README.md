@@ -28,3 +28,7 @@ Besides the layers, VIPER also has another very important feature, which is that
 ## Why VIPER?
 
 Yes, the project is very small, so there is no material need for me to use such a robust architecture like VIPER. I'm well aware its overkill. However, this project was made as part of a challenge, so in order for me to show the people who challenged me that I can do VIPER stuff, I did it. Also, its good for my portfolio, I think this is the first VIPER project that I put on github.
+
+## Why querying US news?
+
+I don't like this, but unfortunately, when I ask for brazilian news on the API, all of its responses come without images. And in order for me to show off my animation/graphics/frontend skills I needed the images, so that is why I am querying US news instead of brazilian news on the API.
