@@ -69,6 +69,7 @@ struct ArticleCellView: View {
 
 	var author: some View {
 		Text("\(String.byAuthor) \(article.author ?? String.authorIsNil)")
+			.multilineTextAlignment(.center)
 			.font(.caption)
 			.opacity(0.8)
 	}
