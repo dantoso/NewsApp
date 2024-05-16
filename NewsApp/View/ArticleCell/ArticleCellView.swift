@@ -75,9 +75,11 @@ struct ArticleCellView: View {
 }
 
 #Preview {
+
 	ArticleCellView(
-		article: ArticleViewModel(model: MockData.articles[0], index: 0),
+		article: MockData.getViewModels()[0],
 		screen: UIScreen.main
 	)
 	.preferredColorScheme(.dark)
+
 }

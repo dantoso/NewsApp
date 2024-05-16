@@ -287,9 +287,9 @@
 		FBFAD30D2BF037AF001C4D0C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				FBFB6D442BF63F09009C00DC /* Model */,
 				FBFB6D452BF63F18009C00DC /* ViewModel */,
 				FB046DC72BF3F5B1007B6AF7 /* Mock */,
-				FBFB6D442BF63F09009C00DC /* Model */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
